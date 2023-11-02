@@ -8,7 +8,7 @@
         <style></style>
     </head>
     <body>
-        @include('partials.navegacion')
+        @include('partials.navegacionUsuarios')
         @yield('container')
     </body>
 </html>
