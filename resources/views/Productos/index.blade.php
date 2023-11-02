@@ -1,35 +1,61 @@
 @extends('layouts.app')
 @section('container')
-<h1 class="text-center">Productos</h1>
-<div class="container">
-    <form action="{{route('ProductosCreate')}}">
-        <button class="btn btn-primary mb-2" type="submit"><span class="p-4">Nuevo</span></button>
-    </form>
-    <table class="table table-responsive table-striped">
-        <tr class="table-primary">
-            <td>Id</td>
-            <td>Nombre</td>
-            <td>Descripción</td>
-            <td>Precio</td>
-            <td>Acciones</td>
-        </tr>
-        @foreach ($productos as $producto)
-        <tr>
-            <td>{{$producto->id}}</td>
-            <td>{{$producto->nombre}}</td>
-            <td>{{$producto->descripcion}}</td>
-            <td>{{$producto->precio}}</td>
-            <td>
-                <div class="d-flex">
-                    <a class="btn btn-success mx-1" href="">Editar</a>
-                    <form action="">
-                        <button class="btn btn-danger mx-1">Eliminar</button>
-                    </form>
+<header class="">
+        <nav class="navbar login-navbar">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="#">GEOLOCALIZADOR</a>
+              </div>
+              <ul class="nav navbar-nav">
+                <li><a href="index.php">ADMINISTRADORES</a></li>
+                <li><a href="LoginUsuario.php">USUARIOS</a></li>
+              </ul>
+            </div>
+    </header>
+    <br>
+    <form class="form-login" action="procesar_login.php" method="POST">
+        <div class ="row">
+            <div class="col-md-6 mx-auto p-0">
+                <div class="card">
+        <div class="login-box">
+            <div class="login-snip">
+                <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Ingresar</label>
+                <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
+                <div class="login-space">
+                    <div class="login">
+                        <input id="permisos" name="permisos" type="text" value="admin" style="visibility: hidden;">
+                        <div class="group">
+                            <label for="user" class="label">Usuario</label>
+                            <input id="user" name="user" type="text" class="input"  placeholder="Ingresa tu Usuario">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Contraseña</label>
+                            <input id="pass" name="pass" type="password" class="input" data-type="password" placeholder="Ingresa tu contraseña">
+                        </div>
+                        <br>
+                        <div class="group">
+                            <input type="submit" class="button" value="Iniciar Sesión">
+                        </div>
+                        <div class="group px-auto text-center">
+                            <?php
+                            if (session_status() == PHP_SESSION_NONE) {
+                                session_start();
+                            }
+                            if(isset($_SESSION['Error']))
+                            {
+                                echo "<span style=\"color: red;\">".$_SESSION['Error']."</span>";
+                                unset($_SESSION['Error']);
+                                //echo "<span style=\"color: red;\">".$_SESSION['Error']."</span>";
+                            }
+                            ?>
+                        </div>
+                        <div class="hr"></div>
+                    </div>
                 </div>
-            </td>
-        </tr>
-        @endforeach
-    </table>
-    {{$productos->links('pagination::bootstrap-5')}}
-</div>
+            </div>
+        </div>   
+        </div>
+        </div>
+        </div>
+    </form>
 @endsection

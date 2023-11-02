@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Producto;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class ProductosController extends Controller
@@ -12,9 +12,9 @@ class ProductosController extends Controller
      */
     public function index()
     {
-        $productos = Producto::paginate(5);
-        return view('Productos.index',['productos'=>$productos]);
-        #dd($producto);
+        $usuario = Usuario::paginate(5);
+        return view('Productos.index',['usuario'=>$usuario]);
+        #dd($usuario);
     }
 
     /**
@@ -22,7 +22,7 @@ class ProductosController extends Controller
      */
     public function create()
     {
-        return view('Productos.Create');
+        return view('Usuario.Create');
     }
 
     /**
@@ -35,12 +35,12 @@ class ProductosController extends Controller
             'descripcion' => 'required|min:5|max:100',
             'precio' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/']
         ]);
-        $producto=Producto::create([
+        $usuario=Usuario::create([
             'nombre'=>$request->nombre,
             'descripcion'=>$request->descripcion,
             'precio'=>$request->precio,
         ]);
-        return redirect()->route('ProductosIndex');
+        return redirect()->route('UsuarioIndex');
     }
 
     /**
