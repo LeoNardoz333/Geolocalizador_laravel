@@ -1,16 +1,7 @@
 @extends('layouts.app')
 @section('container')
 <header class="">
-        <nav class="navbar login-navbar">
-            <div class="container-fluid">
-              <div class="navbar-header">
-                <a class="navbar-brand" href="#">GEOLOCALIZADOR</a>
-              </div>
-              <ul class="nav navbar-nav">
-                <li><a href="index.php">ADMINISTRADORES</a></li>
-                <li><a href="LoginUsuario.html">USUARIOS</a></li>
-              </ul>
-            </div>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/styleUSU.css') }}">
     </header>
     <br>
     <form class="form-login" action="procesar_login.php" method="POST">

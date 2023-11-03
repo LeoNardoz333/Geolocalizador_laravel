@@ -16,7 +16,7 @@
                     <div class="login">
                         <input id="permisos" name="permisos" type="text" value="admin" style="visibility: hidden;">
                         <div class="group">
-                            <label for="user" class="label">Usuario</label>
+                            <label for="user" class="label">Usuarios</label>
                             <input id="user" name="user" type="text" class="input"  placeholder="Ingresa tu Usuario">
                         </div>
                         <div class="group">

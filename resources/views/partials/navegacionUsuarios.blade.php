@@ -4,8 +4,8 @@
       <a class="navbar-brand" href="#">GEOLOCALIZADOR</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="index.php">ADMINISTRADORES</a></li>
-      <li><a href="LoginUsuario.php">USUARIOS</a></li>
+      <li><a href="/">ADMINISTRADORES</a></li>
+      <li><a href="{{route('LoginUsuarios')}}">USUARIOS</a></li>
     </ul>
   </div>
 </nav>

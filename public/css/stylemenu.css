@@ -1,7 +1,7 @@
 body{
 	margin:0;
 	color:#6a6f8c;
-	background:url('./img/FondoAAdmin.jpg') no-repeat;
+	background:url('/img/FondoAAdmin.jpg') no-repeat;
     height: 100vh;
     background-size: cover;background-repeat: no-repeat;
 	font:600 16px/18px 'Open Sans',sans-serif;

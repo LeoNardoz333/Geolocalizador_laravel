@@ -1,6 +1,5 @@
 <?php
-
-use App\Http\Controllers\ProductosController;
+use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,8 +21,4 @@ Route::get('/', function () {
     return view('Productos.index');
 })->name('ProductosIndex');*/
 
-Route::get('/Productos', [ProductosController::class,'index'])->name('ProductosIndex');
-
-Route::get('/Productos/Create', [ProductosController::class,'create'])->name('ProductosCreate');
-
-Route::post('/Productos', [ProductosController::class,'store'])->name('ProductosStore');
+Route::get('/Usuarios/LoginUsuario', [UsuariosController::class,'index'])->name('LoginUsuarios');
