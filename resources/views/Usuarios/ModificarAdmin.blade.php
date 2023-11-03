@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <title>Administradores</title>
+    <title>Modificar Usuarios</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
@@ -15,15 +15,21 @@
                 <a class="navbar-brand" href="Menu.php">MENÚ</a>
               </div>
               <ul class="nav navbar-nav">
-                <li><a href="{{route('TablaUsuarios')}}" style="color:#6a6f8c">Administrar Usuarios</a></li>
-                <li><a href="#" style="color:#6a6f8c">Agregar Refrigerador</a></li>
+                <?php
+                if($_SESSION['permisos']=="admin")
+                {
+                    echo '<li><a href="' . route('TablaUsuarios') . '" style="color:#6a6f8c">Administrar Usuarios</a></li>';
+                    echo '<li><a href="#" style="color:#6a6f8c">Agregar Refrigerador</a></li>';
+                }
+                ?>
               </ul>
             </div>
     </header>
     <div style="display: flex; justify-content: space-between; padding: 0 70px;">
         <form style="flex: 0 0 45%; display: flex; flex-direction: column; align-items: flex-start;" 
-        action="{{route('AgregarUsuario')}}" method="post">
-        @csrf
+        action="{{ route('UpdateUsuario', $usuario->id) }}" method="post">
+            @csrf
+            @method('PUT')
             <div class ="row">
                 <div class="col-md-6 mx-auto p-0">
                     <div class="card">
@@ -35,49 +41,34 @@
                         <div class="login">
                             <div class="group">
                                 <label for="name" class="label">Nombre</label>
-                                <input id="name" name="nombre" type="text" class="input" placeholder="Ingresa el Nombre"
-                                value="{{old('nombre')}}">
-                                @error('nombre')
-                                    <div style="color:red">{{$message}}</div>
-                                @enderror
+                                <input id="name" name="_nombre" type="text" class="input" placeholder="Ingresa el Nombre"
+                                value="{{ $usuario->nombre }}">
                             </div>
                             <div class="group">
                                 <label for="lastname" class="label">Apellido Paterno</label>
-                                <input id="lastname" name="apellidoP" type="text" class="input" placeholder="Ingresa el primer Apellido"
-                                value="{{old('apellidoP')}}">
-                                @error('apellidoP')
-                                    <div style="color:red">{{$message}}</div>
-                                @enderror
+                                <input id="lastname" name="_apellidoP" type="text" class="input" placeholder="Ingresa el primer Apellido"
+                                value="{{ $usuario->apellidoP }}">
                             </div>
                             <div class="group">
                                 <label for="lastname2" class="label">Apellido Materno</label>
-                                <input id="lastname2" name="apellidoM" type="text" class="input" placeholder="Ingresa el segundo Apellido"
-                                value="{{old('apellidoM')}}">
-                                @error('apellidoP')
-                                    <div style="color:red">{{$message}}</div>
-                                @enderror
+                                <input id="lastname2" name="_apellidoM" type="text" class="input" placeholder="Ingresa el segundo Apellido"
+                                value="{{ $usuario->apellidoM }}">
                             </div>
                             <div class="group">
                                 <label for="pass" class="label">Contraseña</label>
-                                <input id="pass" name="pass" type="password" class="input" data-type="password" 
-                                placeholder="Crea una contraseña" value="{{old('_pass')}}">
-                                @error('pass')
-                                    <div style="color:red">{{$message}}</div>
-                                @enderror
+                                <input id="pass" name="_pass" type="password" class="input" data-type="password" 
+                                placeholder="Crea una contraseña" value="{{ $usuario->pass }}">
                             </div>
                             <div class="group">
                                 <label for="select" class="label">Rol</label>
-                                <select name="permisos" id="select" class="selectpicker">
-                                    <option value="admin">Administrador</option>
-                                    <option value="user">Usuario</option>
+                                <select name="r_permisos" id="select" class="selectpicker">
+                                    <option value="admin" {{ $usuario->permisos === 'admin' ? 'selected' : '' }}>Administrador</option>
+                                    <option value="user" {{ $usuario->permisos === 'user' ? 'selected' : '' }}>Usuario</option>
                                 </select>
-                                @error('permisos')
-                                    <div style="color:red">{{$message}}</div>
-                                @enderror
                             </div>
                             <br>
                             <div class="group">
-                                <input name="_enviar" type="submit" class="button" value="Registrar">
+                                <input name="_enviar" type="submit" class="button" value="Modificar">
                             </div>
                         </div>
                     </div>

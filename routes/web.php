@@ -23,14 +23,18 @@ Route::get('/', function () {
     return view('Productos.index');
 })->name('ProductosIndex');*/
 
+//Usuarios
 Route::get('/Usuarios/LoginUsuario', [UsuariosController::class,'index'])->name('LoginUsuarios');
 Route::post('/Usuarios/LoginUsuario', [UsuariosController::class,'store'])->name('UsuariosStore');
 Route::post('/', [UsuariosController::class,'store'])->name('AdminsStore');
+//Refris
 Route::get('/Refris', function (){
     return view('Refris.Menu');
 })->name('RefrisMenu');
+//Administradores
 Route::get('/Usuarios',[AdminsController::class,'index'])->name('TablaUsuarios');
-//Route::get('/Usuarios/LoginUsuario', [AuthController::class,'index'])->name('LoginUsuarios');
-//Route::post('/Usuarios/LoginUsuario', [AuthController::class,'login']);
-//Route::post('/logout', 'AuthController@logout')->name('logout');
-// Reemplaza 'DashboardController' y 'dashboard' por tus propios nombres
+Route::get('/Usuarios/AgregarAdmin',[AdminsController::class,'create'])->name('AddUsuario');
+Route::post('/Usuarios',[AdminsController::class,'store'])->name('AgregarUsuario');
+Route::get('/Usuarios/{id}/ModificarAdmin', [UsuariosController::class, 'edit'])->name('ModificarUsuario');
+Route::put('/Usuarios/{id}', [UsuariosController::class, 'update'])->name('UpdateUsuario');
+Route::delete('/usuarios/{id}', [UsuariosController::class, 'destroy'])->name('EliminarUsuario');

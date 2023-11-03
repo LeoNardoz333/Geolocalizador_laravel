@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class UsuarioResultado extends Model
 {
     protected $table = 'users';
-    protected $fillable = ['id','nombre', 'apellidoP', 'apellidoM', 'pass', 'usuario'];
+    protected $fillable = ['id','nombre', 'apellidoP', 'apellidoM', 'pass', 'permisos', 'usuario'];
 }

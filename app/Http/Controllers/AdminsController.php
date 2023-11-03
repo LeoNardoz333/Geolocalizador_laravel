@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Http\Request;
 use App\Models\UsuarioResultado;
+use App\Models\Usuario;
 
 class AdminsController extends Controller
 {
@@ -12,7 +15,7 @@ class AdminsController extends Controller
      */
     public function index()
     {
-        $resultados = UsuarioResultado::select('users.id','nombre', 'apellidoP', 'apellidoM', 'pass', 'usuario')
+        $resultados = UsuarioResultado::select('users.id','nombre', 'apellidoP', 'apellidoM', 'pass', 'permisos', 'usuario')
             ->join('usuario', 'users.id', '=', 'usuario.fkUsers')
             ->paginate(8);
             return view('Usuarios.index',['resultados'=>$resultados]);
@@ -23,7 +26,7 @@ class AdminsController extends Controller
      */
     public function create()
     {
-        //
+        return view('Usuarios.AgregarAdmin');
     }
 
     /**
@@ -31,7 +34,21 @@ class AdminsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|min:3|max:35',
+            'apellidoP' => 'required|min:5|max:10',
+            'apellidoM' => 'required|min:5|max:10',
+            'pass' => 'required|min:8|max:20',
+            'permisos' => 'required'
+        ]);
+        DB::table('users')->insert([
+            'nombre'=>$request->nombre,
+            'apellidoP'=>$request->apellidoP,
+            'apellidoM'=>$request->apellidoM,
+            'pass'=>$request->pass,
+            'permisos'=>$request->permisos
+        ]);
+        return redirect()->route('TablaUsuarios');
     }
 
     /**
@@ -39,7 +56,6 @@ class AdminsController extends Controller
      */
     public function show(string $id)
     {
-        //
     }
 
     /**
@@ -47,7 +63,8 @@ class AdminsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $usuario = Usuarios::findOrFail($id);
+        return view('Usuarios.ModificarAdmin', compact('usuario'));
     }
 
     /**
@@ -55,7 +72,10 @@ class AdminsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $usuario = Usuario::findOrFail($id);
+        $usuario->update($request->all());
+
+        return redirect()->route('TablaUsuarios')->with('success', 'Usuario actualizado correctamente');
     }
 
     /**
@@ -63,6 +83,8 @@ class AdminsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        User::where('fkUser', $id)->delete();
+        Usuario::where('id', $id)->delete();
+        return redirect()->route('TablaUsuarios')->with('success', 'Usuario eliminado exitosamente');
     }
 }

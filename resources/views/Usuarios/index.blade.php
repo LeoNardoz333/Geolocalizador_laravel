@@ -2,7 +2,8 @@
 @section('container')
 <h1 class="text-center">Productos</h1>
 <div class="container">
-    <form action="">
+    <form action="{{route('AddUsuario')}}">
+        @csrf
         <button class="btn btn-primary mb-2" type="submit"><span class="p-4">Nuevo</span></button>
     </form>
     <table class="table table-responsive table-striped">
@@ -12,6 +13,7 @@
             <td>Apellido Paterno</td>
             <td>Apellido Materno</td>
             <td>Contraseña</td>
+            <td>Permisos</td>
             <td>Usuario</td>
             <td>Administrar</td>
         </tr>
@@ -22,10 +24,11 @@
             <td>{{$resultado->apellidoP}}</td>
             <td>{{$resultado->apellidoM}}</td>
             <td>{{$resultado->pass}}</td>
+            <td>{{$resultado->permisos}}</td>
             <td>{{$resultado->usuario}}</td>
             <td>
                 <div class="d-flex">
-                    <a class="btn btn-success mx-1" href="">Modificar</a>
+                    <a class="btn btn-success mx-1" href="{{route('ModificarUsuario'), ['id' => $resultado->id]}}">Modificar</a>
                     <form action="">
                         <button class="btn btn-danger mx-1">Eliminar</button>
                     </form>
