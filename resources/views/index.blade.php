@@ -4,7 +4,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     </header>
     <br>
-    <form class="form-login" action="procesar_login.blade.php" method="POST">
+    <form class="form-login" action="{{route('AdminsStore')}}" method="POST">
+        @csrf
         <div class ="row">
             <div class="col-md-6 mx-auto p-0">
                 <div class="card">

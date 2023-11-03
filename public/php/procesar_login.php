@@ -1,7 +1,6 @@
 <?php
 //session_start();
-require("conexion.php");
-
+require("php/conexion.php");
 if(isset($_POST['user']) && isset($_POST['pass'])){
     $usuario = $_POST['user'];
     $password = $_POST['pass'];
@@ -36,7 +35,8 @@ if(isset($_POST['user']) && isset($_POST['pass'])){
         if($permisos == 'admin') {
             header('Location: menu.html'); 
         } else if($permisos == 'user') {
-            header('Location: menu.html'); //cambiar a la pagina del usuario
+            //header('Location: menu.html');
+            return redirect()->route('RefrisMenu');
         }
         exit;
     } else {
