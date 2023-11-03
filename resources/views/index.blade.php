@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('container')
 <header class="">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     </header>
     <br>
     <form class="form-login" action="{{route('AdminsStore')}}" method="POST">
