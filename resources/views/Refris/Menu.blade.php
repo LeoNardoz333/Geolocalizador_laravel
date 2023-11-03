@@ -19,7 +19,7 @@
                 session_start();
                 if($_SESSION['permisos']=="admin")
                 {
-                    echo '<li><a href="AgregarAdmin.php" style="color:#6a6f8c">Administrar Usuarios</a></li>';
+                    echo '<li><a href="' . route('TablaUsuarios') . '" style="color:#6a6f8c">Administrar Usuarios</a></li>';
                     echo '<li><a href="#" style="color:#6a6f8c">Agregar Refrigerador</a></li>';
                 }
                 ?>
