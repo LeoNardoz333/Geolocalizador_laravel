@@ -35,6 +35,6 @@ Route::get('/Refris', function (){
 Route::get('/Usuarios',[AdminsController::class,'index'])->name('TablaUsuarios');
 Route::get('/Usuarios/AgregarAdmin',[AdminsController::class,'create'])->name('AddUsuario');
 Route::post('/Usuarios',[AdminsController::class,'store'])->name('AgregarUsuario');
-Route::get('/Usuarios/{id}/ModificarAdmin', [UsuariosController::class, 'edit'])->name('ModificarUsuario');
-Route::put('/Usuarios/{id}', [UsuariosController::class, 'update'])->name('UpdateUsuario');
-Route::delete('/usuarios/{id}', [UsuariosController::class, 'destroy'])->name('EliminarUsuario');
+Route::get('/Usuarios/{id}/ModificarAdmin', [AdminsController::class, 'edit'])->name('ModificarUsuario');
+Route::put('/Usuarios/{id}', [AdminsController::class, 'update'])->name('UpdateUsuario');
+Route::delete('/usuarios/{id}', [AdminsController::class, 'destroy'])->name('EliminarUsuario');

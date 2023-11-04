@@ -15,13 +15,8 @@
                 <a class="navbar-brand" href="Menu.php">MENÚ</a>
               </div>
               <ul class="nav navbar-nav">
-                <?php
-                if($_SESSION['permisos']=="admin")
-                {
-                    echo '<li><a href="' . route('TablaUsuarios') . '" style="color:#6a6f8c">Administrar Usuarios</a></li>';
-                    echo '<li><a href="#" style="color:#6a6f8c">Agregar Refrigerador</a></li>';
-                }
-                ?>
+                    <li><a href="route('TablaUsuarios')" style="color:#6a6f8c">Administrar Usuarios</a></li>
+                    <li><a href="#" style="color:#6a6f8c">Agregar Refrigerador</a></li>
               </ul>
             </div>
     </header>

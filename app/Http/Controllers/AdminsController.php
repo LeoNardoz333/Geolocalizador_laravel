@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use App\Models\UsuarioResultado;
-use App\Models\Usuario;
+use App\Models\Usuarios;
 
 class AdminsController extends Controller
 {
@@ -74,7 +74,6 @@ class AdminsController extends Controller
     {
         $usuario = Usuario::findOrFail($id);
         $usuario->update($request->all());
-
         return redirect()->route('TablaUsuarios')->with('success', 'Usuario actualizado correctamente');
     }
 

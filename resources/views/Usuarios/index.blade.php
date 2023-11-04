@@ -28,7 +28,7 @@
             <td>{{$resultado->usuario}}</td>
             <td>
                 <div class="d-flex">
-                    <a class="btn btn-success mx-1" href="{{route('ModificarUsuario'), ['id' => $resultado->id]}}">Modificar</a>
+                    <a class="btn btn-success mx-1" href="{{route(('ModificarUsuario'), ['id' => $resultado->id])}}">Modificar</a>
                     <form action="">
                         <button class="btn btn-danger mx-1">Eliminar</button>
                     </form>
