@@ -74,8 +74,8 @@
                             <input id="lastname2" name="lastname2" type="text" class="input" placeholder="Ingresa tu segundo Apellido">
                         </div>
                         <div class="group">
-                            <label for="pass" class="label">Contraseña</label>
-                            <input id="pass" name="pass" type="password" class="input" data-type="password" placeholder="Crea tu contraseña">
+                            <label for="pass1" class="label">Contraseña</label>
+                            <input id="pass1" name="pass1" type="password" class="input" data-type="password" placeholder="Crea tu contraseña">
                         </div>
                         <br>
                         <div class="group">

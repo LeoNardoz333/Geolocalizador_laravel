@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <title>Administradores</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styleagregar.css') }}">
 </head>
 <body>
     <header class="">
@@ -20,8 +20,8 @@
               </ul>
             </div>
     </header>
-    <div style="display: flex; justify-content: space-between; padding: 0 70px;">
-        <form style="flex: 0 0 45%; display: flex; flex-direction: column; align-items: flex-start;" 
+    <div style="">
+        <form class="form-login" 
         action="{{route('AgregarUsuario')}}" method="post">
         @csrf
             <div class ="row">

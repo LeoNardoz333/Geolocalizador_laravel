@@ -28,7 +28,7 @@ Route::get('/Usuarios/LoginUsuario', [UsuariosController::class,'index'])->name(
 Route::post('/Usuarios/LoginUsuario', [UsuariosController::class,'store'])->name('UsuariosStore');
 Route::post('/', [UsuariosController::class,'store'])->name('AdminsStore');
 //Refris
-Route::get('/Refris', function (){
+Route::get('/Refris/Menu', function (){
     return view('Refris.Menu');
 })->name('RefrisMenu');
 Route::get('/Refris',[RefrisController::class,'index'])->name('TablaRefris');
