@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <title>Administrar usuarios</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styletabla.css') }}">
 </head>
 <body>
     <header class="">
         <nav class="navbar login-navbar">
             <div class="container-fluid">
               <div class="navbar-header">
-                <a class="navbar-brand" href="{{route('RefrisMenu')}}">MENÚ</a>
+                <a class="navbar-brand" style="color: #6a6f8c" href="{{route('RefrisMenu')}}">MENÚ</a>
               </div>
               <ul class="nav navbar-nav">
                     <li><a href="{{route('TablaUsuarios')}}" style="color:#6a6f8c">Administrar Usuarios</a></li>
@@ -28,11 +28,12 @@
     @endif
 <h1 class="text-center">Usuarios</h1>
 <div class="container">
-    <form action="{{route('AddUsuario')}}">
+    <form class="" action="{{route('AddUsuario')}}">
         @csrf
-        <button class="btn btn-primary mb-2" type="submit"><span class="p-4">Nuevo</span></button>
+        <button class="btn btn-primary mb-2 w-25" style="background-color: #3A4950" type="submit"><span class="p-4">Nuevo</span></button>
     </form>
-    <table class="table table-responsive table-striped">
+    <br><br>
+    <table class="table table-responsive table-striped ">
         <tr class="table-primary">
             <td>ID</td>
             <td>Nombre</td>
@@ -54,12 +55,16 @@
             <td>{{$resultado->usuario}}</td>
             <td>
                 <div class="d-flex">
-                    <a class="btn btn-success mx-1" href="{{route(('ModificarUsuario'), ['id' => $resultado->id])}}">Modificar</a>
-                    <form action="{{route('EliminarUsuario', ['id' => $resultado->id])}}" method="POST">
+                    <a class="buttones btn btn-success mx-1" href="{{route(('ModificarUsuario'), ['id' => $resultado->id])}}">Modificar</a>
+                    </form>                    
+                </div>
+            </td>
+            <td>
+            <div class="d-flex">
+                <form action="{{route('EliminarUsuario', ['id' => $resultado->id])}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-danger mx-1">Eliminar</button>
-                    </form>                    
+                        <button class="buttones btn btn-danger mx-1">Eliminar</button>
                 </div>
             </td>
         </tr>

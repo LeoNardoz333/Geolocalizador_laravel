@@ -27,5 +27,8 @@
             </div>
         </nav>
     </header>
+    <div class="container">
+      <a class="btn btn-primary mb-2 w-25" href="/">Regresar</a>
+    </div>
 </body>
 </html>
