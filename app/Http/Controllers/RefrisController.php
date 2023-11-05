@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\refris;
 
 class RefrisController extends Controller
 {
@@ -11,7 +12,10 @@ class RefrisController extends Controller
      */
     public function index()
     {
-        //
+        $resultados = refris::select('id','nombre', 'marca', 'modelo', 'color', 'tamano',
+         'capacidad', 'ubicacion')
+            ->paginate(8);
+        return view('Refris.index',['resultados'=>$resultados]);
     }
 
     /**

@@ -19,8 +19,12 @@
                 session_start();
                 if($_SESSION['permisos']=="admin")
                 {
-                    echo '<li><a href="' . route('TablaUsuarios') . '" style="color:#6a6f8c">Administrar Usuarios</a></li>';
-                    echo '<li><a href="#" style="color:#6a6f8c">Agregar Refrigerador</a></li>';
+                  echo '<li><a href="' . route('TablaUsuarios') . '" style="color:#6a6f8c">Administrar Usuarios</a></li>';
+                  echo '<li><a href="#" style="color:#6a6f8c">Agregar Refrigerador</a></li>';
+                }
+                else if($_SESSION['permisos']=="user")
+                {
+                  echo '<li><a href="'.route('TablaRefris').'" style="color:#6a6f8c">Refrigeradores</a></li>';
                 }
                 ?>
               </ul>
