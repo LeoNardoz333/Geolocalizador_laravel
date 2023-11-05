@@ -16,7 +16,7 @@
               </div>
               <ul class="nav navbar-nav">
                 <li><a href="/">ADMINISTRADORES</a></li>
-                <li><a href="#">USUARIOS</a></li>
+                <li><a href="{{route('LoginUsuarios')}}">USUARIOS</a></li>
               </ul>
             </div>
     </header>

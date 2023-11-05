@@ -70,7 +70,6 @@ class UsuariosController extends Controller
                     } else if($permisos == 'user') {
                         header('Location: Menu.php'); //cambiar a la pagina del usuario
                     }*/
-                    exit;
                 } else {
                     if($permisos == 'admin') {
                         redirigirConMensaje("Error: El usuario proporcionado no es administrador.");
