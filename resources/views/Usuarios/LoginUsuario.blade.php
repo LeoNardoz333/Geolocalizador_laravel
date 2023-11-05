@@ -1,13 +1,30 @@
-@extends('layouts.app')
-@section('container')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>LoginUsuarios</title>
+    <link rel="stylesheet" href="{{ asset('css/styleUSU.css') }}">
+</head>
+<body>
 <header class="">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/styleUSU.css') }}">
+<nav class="navbar login-navbar">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="#">GEOLOCALIZADOR</a>
+              </div>
+              <ul class="nav navbar-nav">
+                <li><a href="/">ADMINISTRADORES</a></li>
+                <li><a href="#">USUARIOS</a></li>
+              </ul>
+            </div>
     </header>
-    <br>
+<br>
     <form class="form-login" action="{{route('UsuariosStore')}}" method="POST">
         @csrf
         <div class ="row">
-            <div class="col-md-6 mx-auto p-0">
+            <div >
                 <div class="card">
         <div class="login-box">
             <div class="login-snip">
@@ -75,5 +92,7 @@
         </div>
         </div>
         </div>
-    </form>
-@endsection
+    </form>    
+</body>
+</html>
+    

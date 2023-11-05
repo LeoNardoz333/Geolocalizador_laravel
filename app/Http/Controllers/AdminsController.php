@@ -72,7 +72,7 @@ class AdminsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $usuario = Usuario::findOrFail($id);
+        $usuario = Usuarios::findOrFail($id);
         $usuario->update($request->all());
         return redirect()->route('TablaUsuarios')->with('success', 'Usuario actualizado correctamente');
     }

@@ -51,7 +51,7 @@
                             </div>
                             <div class="group">
                                 <label for="pass" class="label">Contraseña</label>
-                                <input id="pass" name="_pass" type="password" class="input" data-type="password" 
+                                <input id="pass" name="_pass" type="password" class="input" data-type="password"
                                 placeholder="Crea una contraseña" value="{{ $usuario->pass }}">
                             </div>
                             <div class="group">

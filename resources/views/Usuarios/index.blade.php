@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('container')
-<h1 class="text-center">Productos</h1>
+<h1 class="text-center">Usuarios</h1>
 <div class="container">
     <form action="{{route('AddUsuario')}}">
         @csrf
