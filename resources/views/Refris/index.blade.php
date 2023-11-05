@@ -38,7 +38,20 @@
                 <td>Capacidad</td>
                 <td>Ubicación</td>
             </tr>
+            @foreach ($resultados as $resultado)
+            <tr>
+                <td>{{$resultado->id}}</td>
+                <td>{{$resultado->nombre}}</td>
+                <td>{{$resultado->marca}}</td>
+                <td>{{$resultado->modelo}}</td>
+                <td>{{$resultado->color}}</td>
+                <td>{{$resultado->tamano}}</td>
+                <td>{{$resultado->capacidad}}</td>
+                <td><a href="" value="{{$resultado->ubicacion}}">Ver</a></td>
+            </tr>
+            @endforeach
         </table>
+        {{$resultados->links('pagination::bootstrap-5')}}
     </div>
 </body>
 </html>
