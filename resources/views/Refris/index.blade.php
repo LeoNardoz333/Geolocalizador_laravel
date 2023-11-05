@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <title>Refrigeradores</title>
-    <link rel="stylesheet" href="{{ asset('css/styletabla.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/stylerefri.css') }}">
 </head>
 <body>
     <header class="">
@@ -47,7 +48,7 @@
                 <td>{{$resultado->color}}</td>
                 <td>{{$resultado->tamano}}</td>
                 <td>{{$resultado->capacidad}}</td>
-                <td><a href="" value="{{$resultado->ubicacion}}">Ver</a></td>
+                <td><a class="buttones btn btn-primary"href="" value="{{$resultado->ubicacion}}">Ver</a></td>
             </tr>
             @endforeach
         </table>
