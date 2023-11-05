@@ -16,7 +16,7 @@ permisos enum('admin','user'));
 create table usuario(
 id int primary key auto_increment,
 fkUsers int,
-usuario varchar(7),
+usuario varchar(10),
 foreign key(fkUsers) references users(id));
 
 create table refris(
