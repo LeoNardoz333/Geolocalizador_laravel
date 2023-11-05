@@ -1,7 +1,7 @@
 <?php
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\AdminsController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RefrisController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +31,7 @@ Route::post('/', [UsuariosController::class,'store'])->name('AdminsStore');
 Route::get('/Refris', function (){
     return view('Refris.Menu');
 })->name('RefrisMenu');
+Route::get('/Refris',[RefrisController::class,'index'])->name('TablaRefris');
 //Administradores
 Route::get('/Usuarios',[AdminsController::class,'index'])->name('TablaUsuarios');
 Route::get('/Usuarios/AgregarAdmin',[AdminsController::class,'create'])->name('AddUsuario');
