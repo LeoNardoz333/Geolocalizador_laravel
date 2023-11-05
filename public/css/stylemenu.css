@@ -9,3 +9,15 @@ body{
 .login-navbar{
     background-color: #111f4d;
 }
+.botona {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background-color: #2f3244;
+	color: white;
+	padding: 16px 20px;
+	font-size: 16px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
