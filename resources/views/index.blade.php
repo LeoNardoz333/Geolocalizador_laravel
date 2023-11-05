@@ -25,7 +25,7 @@
                         </div>
                         <br>
                         <div class="group">
-                            <input type="submit" class="button" value="Iniciar Sesión">
+                            <input name="opcion" type="submit" class="button" value="Iniciar Sesión">
                         </div>
                         <div class="group px-auto text-center">
                             <?php

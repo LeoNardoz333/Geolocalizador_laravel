@@ -15,4 +15,5 @@ class Usuarios extends Model
         'pass',
         'permisos'
     ];
+    public $timestamps = false;
 }

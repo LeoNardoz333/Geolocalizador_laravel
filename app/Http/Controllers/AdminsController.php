@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\UsuarioResultado;
 use App\Models\Usuarios;
+use App\Models\User;
 
 class AdminsController extends Controller
 {
@@ -48,7 +49,7 @@ class AdminsController extends Controller
             'pass'=>$request->pass,
             'permisos'=>$request->permisos
         ]);
-        return redirect()->route('TablaUsuarios');
+        return redirect()->route('TablaUsuarios')->with('success', 'Usuario insertado correctamente');;
     }
 
     /**
@@ -72,8 +73,19 @@ class AdminsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $usuario = Usuario::findOrFail($id);
-        $usuario->update($request->all());
+        $usuario = Usuarios::findOrFail($id);
+
+        $nombre = $request->input('_nombre');
+        $apellidoP = $request->input('_apellidoP');
+        $apellidoM = $request->input('_apellidoM');
+        $pass = $request->input('_pass');
+        $permisos = $request->input('r_permisos');
+        $usuario->nombre = $nombre;
+        $usuario->apellidoP = $apellidoP;
+        $usuario->apellidoM = $apellidoM;
+        $usuario->pass = $pass;
+        $usuario->permisos = $permisos;
+        $usuario->save();
         return redirect()->route('TablaUsuarios')->with('success', 'Usuario actualizado correctamente');
     }
 
@@ -82,8 +94,8 @@ class AdminsController extends Controller
      */
     public function destroy(string $id)
     {
-        User::where('fkUser', $id)->delete();
-        Usuario::where('id', $id)->delete();
+        User::where('fkUsers', $id)->delete();
+        Usuarios::where('id', $id)->delete();
         return redirect()->route('TablaUsuarios')->with('success', 'Usuario eliminado exitosamente');
     }
 }

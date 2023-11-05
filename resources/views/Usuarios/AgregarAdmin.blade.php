@@ -12,7 +12,7 @@
         <nav class="navbar login-navbar">
             <div class="container-fluid">
               <div class="navbar-header">
-                <a class="navbar-brand" href="Menu.php">MENÚ</a>
+                <a class="navbar-brand" href="{{route('RefrisMenu')}}">MENÚ</a>
               </div>
               <ul class="nav navbar-nav">
                 <li><a href="{{route('TablaUsuarios')}}" style="color:#6a6f8c">Administrar Usuarios</a></li>
