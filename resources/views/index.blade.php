@@ -1,6 +1,24 @@
-@extends('layouts.app')
-@section('container')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Login Admmins</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+<body>
 <header class="">
+<nav class="navbar login-navbar">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="#">GEOLOCALIZADOR</a>
+              </div>
+              <ul class="nav navbar-nav">
+                <li><a href="/">ADMINISTRADORES</a></li>
+                <li><a href="#">USUARIOS</a></li>
+              </ul>
+            </div>
     </header>
     <br>
     <form class="form-login" action="{{route('AdminsStore')}}" method="POST">
@@ -49,4 +67,6 @@
         </div>
         </div>
     </form>
-@endsection
+</body>
+</html>
+    
