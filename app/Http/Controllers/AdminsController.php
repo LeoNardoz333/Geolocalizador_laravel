@@ -49,7 +49,7 @@ class AdminsController extends Controller
             'pass'=>$request->pass,
             'permisos'=>$request->permisos
         ]);
-        return redirect()->route('TablaUsuarios')->with('success', 'Usuario insertado correctamente');;
+        return redirect()->route('TablaUsuarios')->with('success', 'Usuario insertado correctamente');
     }
 
     /**

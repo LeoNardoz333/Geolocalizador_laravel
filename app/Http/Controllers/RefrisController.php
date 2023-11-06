@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\refris;
 
@@ -18,12 +19,20 @@ class RefrisController extends Controller
         return view('Refris.index',['resultados'=>$resultados]);
     }
 
+    public function indexAdmins()
+    {
+        $resultados = refris::select('id','nombre', 'marca', 'modelo', 'color', 'tamano',
+         'capacidad', 'gps', 'ubicacion')
+            ->paginate(8);
+        return view('Refris.indexAdmins',['resultados'=>$resultados]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('Refris.AddRefris');
     }
 
     /**
@@ -31,7 +40,27 @@ class RefrisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre'=>'required|min:3|max:50',
+            'marca'=>'required|min:3|max:20',
+            'modelo'=>'required|min:2|max:30',
+            'color'=>'required|min:3|max:30',
+            'tamano'=>'required|min:1|max:15',
+            'capacidad'=>'required|min:3|max:20',
+            'gps'=>'required'
+        ]);
+        DB::table('refris')->insert([
+            'nombre'=>$request->nombre,
+            'marca'=>$request->marca,
+            'modelo'=>$request->modelo,
+            'color'=>$request->color,
+            'tamano'=>$request->tamano,
+            'capacidad'=>$request->capacidad,
+            'gps'=>$request->gps,
+            'ubicacion'=>$request->ubicacion
+        ]);
+        return redirect()->route('TablaRefrisAdmins')->
+        with('success','Refrigerador insertado correctamente.');
     }
 
     /**

@@ -32,6 +32,9 @@ Route::get('/Refris/Menu', function (){
     return view('Refris.Menu');
 })->name('RefrisMenu');
 Route::get('/Refris',[RefrisController::class,'index'])->name('TablaRefris');
+Route::get('/Refris/indexAdmins',[RefrisController::class,'indexAdmins'])->name('TablaRefrisAdmins');
+Route::get('/Refris/AddRefris',[RefrisController::class,'create'])->name('AgregarRefri');
+Route::post('Refris',[RefrisController::class,'store'])->name('InsertarRefri');
 //Administradores
 Route::get('/Usuarios',[AdminsController::class,'index'])->name('TablaUsuarios');
 Route::get('/Usuarios/AgregarAdmin',[AdminsController::class,'create'])->name('AddUsuario');

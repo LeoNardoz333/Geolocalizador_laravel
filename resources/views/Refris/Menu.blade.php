@@ -20,7 +20,7 @@
                 if($_SESSION['permisos']=="admin")
                 {
                   echo '<li><a href="' . route('TablaUsuarios') . '" style="color:#6a6f8c">Administrar Usuarios</a></li>';
-                  echo '<li><a href="#" style="color:#6a6f8c">Agregar Refrigerador</a></li>';
+                  echo '<li><a href="'.route('TablaRefrisAdmins').'" style="color:#6a6f8c">Administrar Refrigeradores</a></li>';
                 }
                 else if($_SESSION['permisos']=="user")
                 {
