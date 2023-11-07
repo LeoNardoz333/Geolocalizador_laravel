@@ -88,6 +88,6 @@
             </div>
         </form>
     </div>
-    <a href="{{route('TablaUsuarios')}}">Regresar</a>
+    <a class="botona btn btn-primary mb-2 w-25" style="float: rigth" href="{{route('TablaUsuarios')}}">Regresar</a>
 </body>
 </html>

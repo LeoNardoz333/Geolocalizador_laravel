@@ -177,3 +177,15 @@ color: #b3b3b3;
 	border:none;
 	background-color: #464d5298;
   }
+  .botona {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background-color: #2f3244;
+	color: white;
+	padding: 16px 20px;
+	font-size: 16px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
