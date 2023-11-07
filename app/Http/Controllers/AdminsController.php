@@ -73,6 +73,13 @@ class AdminsController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            '_nombre' => 'required|min:3|max:35',
+            '_apellidoP' => 'required|min:5|max:10',
+            '_apellidoM' => 'required|min:5|max:10',
+            '_pass' => 'required|min:8|max:20'
+        ]);
+
         $usuario = Usuarios::findOrFail($id);
 
         $nombre = $request->input('_nombre');

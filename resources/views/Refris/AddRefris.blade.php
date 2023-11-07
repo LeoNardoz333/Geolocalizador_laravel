@@ -27,49 +27,49 @@
         <h1 class="text-center">Agregar Refrigerador</h1>
         <div>
             <span>Nombre: </span>
-            <input name="nombre" type="text">
+            <input name="nombre" type="text" value="{{old('nombre')}}">
             @error('nombre')
                 <div style="color:red">{{$message}}</div>
             @enderror
         </div>
         <div>
             <span>Marca: </span>
-            <input name="marca" type="text">
+            <input name="marca" type="text" value="{{old('marca')}}">
             @error('marca')
                 <div style="color:red">{{$message}}</div>
             @enderror
         </div>
         <div>
             <span>Modelo: </span>
-            <input name="modelo" type="text">
+            <input name="modelo" type="text" value="{{old('modelo')}}">
             @error('modelo')
                 <div style="color:red">{{$message}}</div>
             @enderror
         </div>
         <div>
             <span>Color: </span>
-            <input name="color" type="text">
+            <input name="color" type="text" value="{{old('color')}}">
             @error('color')
                 <div style="color:red">{{$message}}</div>
             @enderror
         </div>
         <div>
             <span>Tamaño: </span>
-            <input name="tamano" type="text">
+            <input name="tamano" type="text" value="{{old('tamano')}}">
             @error('tamano')
                 <div style="color:red">{{$message}}</div>
             @enderror
         </div>
         <div>
             <span>Capacidad: </span>
-            <input name="capacidad" type="text">
+            <input name="capacidad" type="text" value="{{old('capacidad')}}">
             @error('capacidad')
                 <div style="color:red">{{$message}}</div>
             @enderror
         </div>
         <div>
             <span>Dispositivo GPS: </span>
-            <input name="gps" type="text">
+            <input name="gps" type="text" value="{{old('gps')}}">
             @error('gps')
                 <div style="color:red">{{$message}}</div>
             @enderror
@@ -77,7 +77,7 @@
         {{-- El de ubicación es temporal para la ubicación fija owo --}}
         <div>
             <span>Ubicación: </span>
-            <input name="ubicacion" type="text">
+            <input name="ubicacion" type="text" value="{{old('ubicacion')}}">
         </div>
         <input type="submit" value="Agregar">
     </form>

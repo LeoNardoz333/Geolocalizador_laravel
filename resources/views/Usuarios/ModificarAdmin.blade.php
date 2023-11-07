@@ -39,21 +39,33 @@
                                 <label for="name" class="label">Nombre</label>
                                 <input id="name" name="_nombre" type="text" class="input" placeholder="Ingresa el Nombre"
                                 value="{{ $usuario->nombre }}">
+                                @error('_nombre')
+                                    <div style="color:red">{{$message}}</div>
+                                @enderror
                             </div>
                             <div class="group">
                                 <label for="lastname" class="label">Apellido Paterno</label>
                                 <input id="lastname" name="_apellidoP" type="text" class="input" placeholder="Ingresa el primer Apellido"
                                 value="{{ $usuario->apellidoP }}">
+                                @error('_apellidoP')
+                                    <div style="color:red">{{$message}}</div>
+                                @enderror
                             </div>
                             <div class="group">
                                 <label for="lastname2" class="label">Apellido Materno</label>
                                 <input id="lastname2" name="_apellidoM" type="text" class="input" placeholder="Ingresa el segundo Apellido"
                                 value="{{ $usuario->apellidoM }}">
+                                @error('_apellidoP')
+                                    <div style="color:red">{{$message}}</div>
+                                @enderror
                             </div>
                             <div class="group">
                                 <label for="pass" class="label">Contraseña</label>
                                 <input id="pass" name="_pass" type="password" class="input" data-type="password"
                                 placeholder="Crea una contraseña" value="{{ $usuario->pass }}">
+                                @error('_pass')
+                                    <div style="color:red">{{$message}}</div>
+                                @enderror
                             </div>
                             <div class="group">
                                 <label for="select" class="label">Rol</label>
@@ -75,6 +87,5 @@
             </div>
         </form>
     </div>
-    <a href="{{route('TablaUsuarios')}}">Regresar</a>
 </body>
 </html>
