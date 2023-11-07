@@ -34,8 +34,8 @@ class UsuariosController extends Controller
     if(isset($_POST['opcion'])){
         $opcion = $_POST['opcion'];
         
-        function redirigirConMensaje($error_message) {
-            $_SESSION['Error'] = $error_message;
+        function redirigirConMensaje($message, $messageType) {
+            $_SESSION['Message'] = ['text' => $message, 'type' => $messageType];
             if (isset($_SERVER['HTTP_REFERER'])) {
                 header("Location: " . $_SERVER['HTTP_REFERER']);
             } else {
@@ -44,6 +44,7 @@ class UsuariosController extends Controller
             }
             exit;
         }
+
         //login:-----------------------------------------------------------------------------------------------
         if($opcion == "Iniciar Sesión") {
             if(isset($_POST['user']) && isset($_POST['pass'])){
@@ -61,7 +62,7 @@ class UsuariosController extends Controller
                 mysqli_close($conn);
             
                 if((empty($usuario)||$usuario==null)||(empty($password)||$password==null)) {
-                    redirigirConMensaje("Error: Credenciales no proporcionadas.");
+                    redirigirConMensaje("Error: Credenciales no proporcionadas.", 'error');
                 } else if (mysqli_num_rows($result) == 1) {
                     $_SESSION['user'] = $_POST['user'];
                     $_SESSION['permisos'] = $_POST['permisos'];
@@ -73,13 +74,13 @@ class UsuariosController extends Controller
                     }*/
                 } else {
                     if($permisos == 'admin') {
-                        redirigirConMensaje("Error: El usuario proporcionado no es administrador.");
+                        redirigirConMensaje("Error: El usuario proporcionado no es administrador.", 'error');
                     } else if($permisos == 'user') {
-                        redirigirConMensaje("Error: El usuario proporcionado es administrador.");
+                        redirigirConMensaje("Error: El usuario proporcionado es administrador.", 'error');
                     }
                 }
             } else {
-                redirigirConMensaje("Error: Credenciales no proporcionadas.");
+                redirigirConMensaje("Error: Credenciales no proporcionadas.", 'error');
             }
         }
         //registro:--------------------------------------------------------------------------------------------
@@ -92,7 +93,7 @@ class UsuariosController extends Controller
 
                 if((empty($name)||$name==null)||(empty($lastname)||$lastname==null)||
                 (empty($lastname2)||$lastname2==null)||(empty($pass)||$pass==null)) {
-                    redirigirConMensaje("Error: Datos incompletos.");
+                    redirigirConMensaje("Error: Datos incompletos.", 'error');
                 } else {
                     $query = "INSERT INTO users VALUES (NULL,'$name', '$lastname', '$lastname2','$pass',2)";
                     $result = mysqli_query($conn, $query);
@@ -103,12 +104,12 @@ class UsuariosController extends Controller
                         $result1 = mysqli_query($conn, $query1);
                         $row = mysqli_fetch_assoc($result1);
                         $usuario = $row['usuario'];
-                        redirigirConMensaje("Registro exitoso, usuario: $usuario");
+                        redirigirConMensaje("Registro exitoso, usuario: $usuario", 'success');
                     }
                     mysqli_close($conn);
                 }
             } else {
-                redirigirConMensaje("Error: Datos no proporcionados.");
+                redirigirConMensaje("Error: Datos no proporcionados.", 'error');
             }
         }
     }

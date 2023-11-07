@@ -6,6 +6,22 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <title>LoginUsuarios</title>
     <link rel="stylesheet" href="{{ asset('css/styleUSU.css') }}">
+    <style>
+        .error-message {
+    color: red;
+    background-color: pink; /* Puedes personalizar el fondo para mensajes de error */
+    border: 1px solid darkred; /* Puedes personalizar el borde para mensajes de error */
+    padding: 5px;
+}
+
+.success-message {
+    color: green;
+    background-color: lightgreen; /* Puedes personalizar el fondo para mensajes de éxito */
+    border: 1px solid darkgreen; /* Puedes personalizar el borde para mensajes de éxito */
+    padding: 5px;
+}
+
+    </style>
 </head>
 <body>
 <header class="">
@@ -50,11 +66,16 @@
                             if (session_status() == PHP_SESSION_NONE) {
                                 session_start();
                             }
-                            if(isset($_SESSION['Error']))
-                            {
-                                echo "<span style=\"color: red;\">".$_SESSION['Error']."</span>";
-                                unset($_SESSION['Error']);
-                                //echo "<span style=\"color: red;\">".$_SESSION['Error']."</span>";
+                            if (isset($_SESSION['Message'])) {
+                                $message = $_SESSION['Message']['text'];
+                                $messageType = $_SESSION['Message']['type'];
+                                unset($_SESSION['Message']);
+                            
+                                if ($messageType === 'error') {
+                                    echo "<div class=\"error-message\">" . $message . "</div>";
+                                } elseif ($messageType === 'success') {
+                                    echo "<div class=\"success-message\">" . $message . "</div>";
+                                }
                             }
                             ?>
                         </div>
