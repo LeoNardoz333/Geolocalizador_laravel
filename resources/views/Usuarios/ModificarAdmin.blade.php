@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <title>Modificar Usuarios</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styleagregar.css') }}">
 </head>
 <body>
     <header class="">
@@ -21,8 +21,8 @@
             </div>
         </nav>
     </header>
-    <div style="display: flex; justify-content: space-between; padding: 0 70px;">
-        <form style="flex: 0 0 45%; display: flex; flex-direction: column; align-items: flex-start;" 
+    <div style="">
+        <form class="form-login"
         action="{{ route('UpdateUsuario', $usuario->id) }}" method="post">
             @csrf
             @method('PUT')
@@ -31,7 +31,7 @@
                     <div class="card">
             <div class="login-box">
                 <div class="login-snip">
-                    <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Registrar</label>
+                    <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Modificar</label>
                     <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
                     <div class="login-space">
                         <div class="login">
@@ -39,21 +39,33 @@
                                 <label for="name" class="label">Nombre</label>
                                 <input id="name" name="_nombre" type="text" class="input" placeholder="Ingresa el Nombre"
                                 value="{{ $usuario->nombre }}">
+                                @error('_nombre')
+                                    <div style="color:red">{{$message}}</div>
+                                @enderror
                             </div>
                             <div class="group">
                                 <label for="lastname" class="label">Apellido Paterno</label>
                                 <input id="lastname" name="_apellidoP" type="text" class="input" placeholder="Ingresa el primer Apellido"
                                 value="{{ $usuario->apellidoP }}">
+                                @error('_apellidoP')
+                                    <div style="color:red">{{$message}}</div>
+                                @enderror
                             </div>
                             <div class="group">
                                 <label for="lastname2" class="label">Apellido Materno</label>
                                 <input id="lastname2" name="_apellidoM" type="text" class="input" placeholder="Ingresa el segundo Apellido"
                                 value="{{ $usuario->apellidoM }}">
+                                @error('_apellidoP')
+                                    <div style="color:red">{{$message}}</div>
+                                @enderror
                             </div>
                             <div class="group">
                                 <label for="pass" class="label">Contraseña</label>
                                 <input id="pass" name="_pass" type="password" class="input" data-type="password"
                                 placeholder="Crea una contraseña" value="{{ $usuario->pass }}">
+                                @error('_pass')
+                                    <div style="color:red">{{$message}}</div>
+                                @enderror
                             </div>
                             <div class="group">
                                 <label for="select" class="label">Rol</label>

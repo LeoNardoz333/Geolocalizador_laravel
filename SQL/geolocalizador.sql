@@ -25,8 +25,10 @@ nombre varchar(50),
 marca varchar(50),
 modelo VARCHAR(50),
 color varchar(50),
-tamaño VARCHAR(20),
-Capacidad VARCHAR(50));
+tamano VARCHAR(20),
+capacidad VARCHAR(50),
+gps varchar(50),
+ubicacion varchar(200));
 
 drop trigger if exists crear_usuario;
 delimiter //

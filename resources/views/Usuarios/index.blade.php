@@ -16,7 +16,7 @@
               </div>
               <ul class="nav navbar-nav">
                     <li><a href="{{route('TablaUsuarios')}}" style="color:#6a6f8c">Administrar Usuarios</a></li>
-                    <li><a href="#" style="color:#6a6f8c">Agregar Refrigerador</a></li>
+                    <li><a href="{{route('TablaRefrisAdmins')}}" style="color:#6a6f8c">Administrar Refrigeradores</a></li>
               </ul>
             </div>
         </nav>
@@ -55,16 +55,18 @@
             <td>{{$resultado->usuario}}</td>
             <td>
                 <div class="d-flex">
-                    <a class="buttones btn btn-success mx-1" href="{{route(('ModificarUsuario'), ['id' => $resultado->id])}}">Modificar</a>
-                    </form>                    
+                    <a class="buttones btn btn-success mx-1" 
+                    href="{{route(('ModificarUsuario'), ['id' => $resultado->id])}}">Modificar</a>
                 </div>
             </td>
             <td>
-            <div class="d-flex">
-                <form action="{{route('EliminarUsuario', ['id' => $resultado->id])}}" method="POST">
+                <div class="d-flex">
+                    <form action="{{route('EliminarUsuario', ['id' => $resultado->id])}}" method="POST"
+                        onsubmit="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">
                         @csrf
                         @method('DELETE')
                         <button class="buttones btn btn-danger mx-1">Eliminar</button>
+                    </form>
                 </div>
             </td>
         </tr>
@@ -72,6 +74,7 @@
     </table>
     {{$resultados->links('pagination::bootstrap-5')}}
 </div>
+<a class="botona btn btn-primary mb-2 w-25" style="float: rigth" href="{{route('RefrisMenu')}}">Regresar</a>
 </body>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
