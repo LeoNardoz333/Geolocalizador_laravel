@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Models\UpRefris;
 use App\Models\refris;
 
 class RefrisController extends Controller
@@ -76,7 +77,8 @@ class RefrisController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $refris = UpRefris::findOrFail($id);
+        return view('Refris.UpdateRefris', compact('refris'));
     }
 
     /**
@@ -84,7 +86,35 @@ class RefrisController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nombre'=>'required|min:3|max:50',
+            'marca'=>'required|min:3|max:20',
+            'modelo'=>'required|min:2|max:30',
+            'color'=>'required|min:3|max:30',
+            'tamano'=>'required|min:1|max:15',
+            'capacidad'=>'required|min:3|max:20',
+            'gps'=>'required'
+        ]);
+
+        $refris = UpRefris::findOrFail($id);
+        
+        $nombre=$request->input('nombre');
+        $marca=$request->input('marca');
+        $modelo=$request->input('modelo');
+        $color=$request->input('color');
+        $tamano=$request->input('tamano');
+        $capacidad=$request->input('capacidad');
+        $gps=$request->input('gps');
+        
+        $refris->nombre=$nombre;
+        $refris->marca=$marca;
+        $refris->modelo=$modelo;
+        $refris->color=$color;
+        $refris->tamano=$tamano;
+        $refris->capacidad=$capacidad;
+        $refris->gps=$gps;
+        $refris->save();
+        return redirect()->route('TablaRefrisAdmins')->with('success','Refrigerador actualizado correctamente.');
     }
 
     /**
@@ -92,6 +122,7 @@ class RefrisController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        UpRefris::where('id',$id)->delete();
+        return redirect()->route('TablaRefrisAdmins')->with('success','Refrigerador eliminado correctamente.');
     }
 }

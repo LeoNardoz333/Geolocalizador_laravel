@@ -22,54 +22,55 @@
             </div>
         </nav>
     </header>
-    <form action="{{route('InsertarRefri')}}" method="POST">
+    <form action="{{route('UpdateRefris', $refris->id)}}" method="POST">
         @csrf
-        <h1 class="text-center">Agregar Refrigerador</h1>
+        @method('PUT')
+        <h1 class="text-center">Modificar Refrigerador</h1>
         <div>
             <span>Nombre: </span>
-            <input name="nombre" type="text">
+            <input name="nombre" type="text" class="input" value="{{ $refris->nombre }}">
             @error('nombre')
                 <div style="color:red">{{$message}}</div>
             @enderror
         </div>
         <div>
             <span>Marca: </span>
-            <input name="marca" type="text">
+            <input name="marca" type="text" class="input" value="{{ $refris->marca }}">
             @error('marca')
                 <div style="color:red">{{$message}}</div>
             @enderror
         </div>
         <div>
             <span>Modelo: </span>
-            <input name="modelo" type="text">
+            <input name="modelo" type="text" class="input" value="{{ $refris->modelo }}">
             @error('modelo')
                 <div style="color:red">{{$message}}</div>
             @enderror
         </div>
         <div>
             <span>Color: </span>
-            <input name="color" type="text">
+            <input name="color" type="text" class="input" value="{{ $refris->color }}">
             @error('color')
                 <div style="color:red">{{$message}}</div>
             @enderror
         </div>
         <div>
             <span>Tamaño: </span>
-            <input name="tamano" type="text">
+            <input name="tamano" type="text" class="input" value="{{ $refris->tamano }}">
             @error('tamano')
                 <div style="color:red">{{$message}}</div>
             @enderror
         </div>
         <div>
             <span>Capacidad: </span>
-            <input name="capacidad" type="text">
+            <input name="capacidad" type="text" class="input" value="{{ $refris->capacidad }}">
             @error('capacidad')
                 <div style="color:red">{{$message}}</div>
             @enderror
         </div>
         <div>
             <span>Dispositivo GPS: </span>
-            <input name="gps" type="text">
+            <input name="gps" type="text" class="input" value="{{ $refris->gps }}">
             @error('gps')
                 <div style="color:red">{{$message}}</div>
             @enderror
@@ -77,9 +78,9 @@
         {{-- El de ubicación es temporal para la ubicación fija owo --}}
         <div>
             <span>Ubicación: </span>
-            <input name="ubicacion" type="text">
+            <input name="ubicacion" type="text" value="{{$refris->ubicacion}}" disabled>
         </div>
-        <input type="submit" value="Agregar">
+        <input type="submit" value="Modificar">
     </form>
     <a href="{{route('TablaRefrisAdmins')}}">Regresar</a>
 </body>

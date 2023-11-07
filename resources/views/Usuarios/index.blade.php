@@ -61,7 +61,8 @@
             </td>
             <td>
                 <div class="d-flex">
-                    <form action="{{route('EliminarUsuario', ['id' => $resultado->id])}}" method="POST">
+                    <form action="{{route('EliminarUsuario', ['id' => $resultado->id])}}" method="POST"
+                        onsubmit="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">
                         @csrf
                         @method('DELETE')
                         <button class="buttones btn btn-danger mx-1">Eliminar</button>
@@ -73,6 +74,7 @@
     </table>
     {{$resultados->links('pagination::bootstrap-5')}}
 </div>
+<a href="{{route('RefrisMenu')}}">Regresar</a>
 </body>
 <script>
     document.addEventListener("DOMContentLoaded", function() {

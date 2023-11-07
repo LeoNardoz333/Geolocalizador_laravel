@@ -61,8 +61,10 @@
                 </td>
                 <td>
                     <div class="d-flex">
-                        <a class="buttones btn btn-success" href="">Modificar</a>
-                        <form action="" method="POST">
+                        <a class="buttones btn btn-success" 
+                        href="{{route('ModificarRefris', $resultado->id)}}">Modificar</a>
+                        <form action="{{route('EliminarRefris', $resultado->id)}}" method="POST" 
+                        onsubmit="return confirm('¿Estás seguro de que deseas eliminar este refrigerador?');">
                             @csrf
                             @method('DELETE')
                             <button class="buttones btn btn-danger">Eliminar</button>
@@ -74,6 +76,7 @@
         </table>
         {{$resultados->links('pagination::bootstrap-5')}}
     </div>
+    <a href="{{route('RefrisMenu')}}">Regresar</a>
 </body>
 <script>
     document.addEventListener("DOMContentLoaded", function() {

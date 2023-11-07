@@ -54,5 +54,6 @@
         </table>
         {{$resultados->links('pagination::bootstrap-5')}}
     </div>
+    <a href="{{route('RefrisMenu')}}">Regresar</a>
 </body>
 </html>

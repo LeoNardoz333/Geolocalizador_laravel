@@ -75,5 +75,6 @@
             </div>
         </form>
     </div>
+    <a href="{{route('TablaUsuarios')}}">Regresar</a>
 </body>
 </html>
