@@ -33,6 +33,7 @@ class UsuariosController extends Controller
         require("php/conexion.php");
     if(isset($_POST['opcion'])){
         $opcion = $_POST['opcion'];
+        
         function redirigirConMensaje($error_message) {
             $_SESSION['Error'] = $error_message;
             if (isset($_SERVER['HTTP_REFERER'])) {
@@ -95,11 +96,14 @@ class UsuariosController extends Controller
                 } else {
                     $query = "INSERT INTO users VALUES (NULL,'$name', '$lastname', '$lastname2','$pass',2)";
                     $result = mysqli_query($conn, $query);
-
                     if (!$result) {
                         die("Error al registrar: " . mysqli_error($conn));
                     } else {
-                        redirigirConMensaje("Registro exitoso");
+                        $query1 = "SELECT usuario FROM usuario ORDER BY id DESC LIMIT 1";
+                        $result1 = mysqli_query($conn, $query1);
+                        $row = mysqli_fetch_assoc($result1);
+                        $usuario = $row['usuario'];
+                        redirigirConMensaje("Registro exitoso, usuario: $usuario");
                     }
                     mysqli_close($conn);
                 }
