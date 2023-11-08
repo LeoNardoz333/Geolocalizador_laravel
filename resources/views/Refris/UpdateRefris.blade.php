@@ -22,89 +22,100 @@
             </div>
         </nav>
     </header>
-    <div style="">
-    <h1 class="text-center">Modificar Refrigerador</h1>
-    <br><br><br>
-        <form class="form-login" 
-        action="{{route('UpdateRefris', $refris->id)}}" method="POST">
-        @csrf
-        @method('PUT')
-            <div class ="row">
+    <div>
+        <form class="form-login" action="{{ route('UpdateRefris', $refris->id) }}" method="POST">
+            @csrf
+            @method('PUT')
+            <div class="row">
                 <div class="col-md-6 mx-auto p-0">
                     <div class="card">
-            <div class="login-box">
-                <div class="login-snip">
-                    <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Registrar</label>
-                    <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
-                    <div class="login-space">
-                    <div class="login">
-                            <div class="group">
-                                <span class="label">Nombre: </span>
-                                <input name="nombre" type="text" class="input" value="{{ $refris->nombre }}">
-                                @error('nombre')
-                                    <div style="color:red">{{$message}}</div>
-                                @enderror
-                            </div>
-                            <div class="group">
-                                <span class="label">Marca: </span>
-                                <input name="marca" type="text" class="input" value="{{ $refris->marca }}">
-                                @error('marca')
-                                    <div style="color:red">{{$message}}</div>
-                                @enderror
-                            </div>
-                            <div class="group">
-                                <span class="label">Modelo: </span>
-                                <input name="modelo" type="text" class="input" value="{{ $refris->modelo }}">
-                                @error('modelo')
-                                    <div style="color:red">{{$message}}</div>
-                                @enderror
-                            </div>
-                            <div class="group">
-                                <span class="label">Color: </span>
-                                <input name="color" type="text" class="input" value="{{ $refris->color }}">
-                                @error('color')
-                                    <div style="color:red">{{$message}}</div>
-                                @enderror
-                            </div>
-                            <div class="group">
-                                <span class="label">Tamaño: </span>
-                                <input name="tamano" type="text" class="input" value="{{ $refris->tamano }}">
-                                @error('tamano')
-                                    <div style="color:red">{{$message}}</div>
-                                @enderror
-                            </div>
-                            <div class="group">
-                                <span class="label">Capacidad: </span>
-                                <input name="capacidad" type="text" class="input" value="{{ $refris->capacidad }}">
-                                @error('capacidad')
-                                    <div style="color:red">{{$message}}</div>
-                                @enderror
-                            </div>
-                            <div class="group">
-                                <span class="label">Dispositivo GPS: </span>
-                                <input name="gps" type="text" class="input" value="{{ $refris->gps }}">
-                                @error('gps')
-                                    <div style="color:red">{{$message}}</div>
-                                @enderror
-                            </div>
-                            {{-- El de ubicación es temporal para la ubicación fija owo --}}
-                            <div class="group">
-                                <span class="label">Ubicación: </span>
-                                <input name="ubicacion" type="text" class="input" value="{{$refris->ubicacion}}" disabled>
-                            </div>
-                            <br>
-                            <div class="group">
-                                <input type="submit" class="button" value="Modificar">
+                        <div class="login-box">
+                            <div class="login-snip">
+                                <input id="tab-1" type="radio" name="tab" class="sign-in" checked>
+                                <label for "tab-1" class="tab">Modificar Refrigeradores</label>
+                                <input id="tab-2" type="radio" name="tab" class="sign-up">
+                                <label for="tab-2" class="tab"></label>
+                                <div class="login-space">
+                                    <div class="login">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="group">
+                                                    <span class="label">Nombre:</span>
+                                                    <input name="nombre" type="text" class="input" value="{{ $refris->nombre }}">
+                                                    @error('nombre')
+                                                        <div style="color: red">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+        
+                                                <div class="group">
+                                                    <span class="label">Marca:</span>
+                                                    <input name="marca" type="text" class="input" value="{{ $refris->marca }}">
+                                                    @error('marca')
+                                                        <div style="color: red">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+        
+                                                <div class="group">
+                                                    <span class="label">Modelo:</span>
+                                                    <input name="modelo" type="text" class="input" value="{{ $refris->modelo }}">
+                                                    @error('modelo')
+                                                        <div style="color: red">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+        
+                                                <div class="group">
+                                                    <span class="label">Color:</span>
+                                                    <input name="color" type="text" class="input" value="{{ $refris->color }}">
+                                                    @error('color')
+                                                        <div style="color: red">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="group">
+                                                    <span class="label">Tamaño:</span>
+                                                    <input name="tamano" type="text" class="input" value="{{ $refris->tamano }}">
+                                                    @error('tamano')
+                                                        <div style="color: red">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+        
+                                                <div class="group">
+                                                    <span class="label">Capacidad:</span>
+                                                    <input name="capacidad" type="text" class="input" value="{{ $refris->capacidad }}">
+                                                    @error('capacidad')
+                                                        <div style="color: red">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+        
+                                                <div class="group">
+                                                    <span class="label">Dispositivo GPS:</span>
+                                                    <input name="gps" type="text" class="input" value="{{ $refris->gps }}">
+                                                    @error('gps')
+                                                        <div style="color: red">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+        
+                                                <div class="group">
+                                                    <span class="label">Ubicación:</span>
+                                                    <input name="ubicacion" type="text" class="input" value="{{ $refris->ubicacion }}" disabled>
+                                                </div>
+        
+                                                <br>
+                                            </div>
+                                        </div>
+                                        <div class="group">
+                                            <input type="submit" class="button mx-auto" value="Modificar">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
-            </div>   
-            </div>
-            </div>
             </div>
         </form>
+        
     </div>
     <a class="botona btn btn-primary mb-2 w-25" style="float: rigth" href="{{route('TablaRefrisAdmins')}}">Regresar</a>
 </body>

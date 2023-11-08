@@ -24,7 +24,6 @@
     </header>
 
     <div>
-    <h1 class="text-center">Agregar Refrigerador</h1>
     <br><br><br>    
     <form class="form-login"  action="{{route('InsertarRefri')}}" method="POST">
     <div class ="row">
