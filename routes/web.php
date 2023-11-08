@@ -45,3 +45,5 @@ Route::post('/Usuarios',[AdminsController::class,'store'])->name('AgregarUsuario
 Route::get('/Usuarios/{id}/ModificarAdmin', [AdminsController::class, 'edit'])->name('ModificarUsuario');
 Route::put('/Usuarios/{id}', [AdminsController::class, 'update'])->name('UpdateUsuario');
 Route::delete('/usuarios/{id}', [AdminsController::class, 'destroy'])->name('EliminarUsuario');
+
+Route::get('/Refris/mapa',[RefrisController::class,'owo1'])->name('owo2');

@@ -56,8 +56,8 @@
                 <td>{{$resultado->tamano}}</td>
                 <td>{{$resultado->capacidad}}</td>
                 <td>{{$resultado->gps}}</td>
-                <td><a class="buttones btn btn-primary"href="" 
-                    value="{{$resultado->ubicacion}}">Ver</a>
+                <td><a class="buttones btn btn-primary"href="{{route('owo2')}}" 
+                    value="{{$resultado->owo2}}">Ver</a>
                 </td>
                 <td>
                     <div class="d-flex">

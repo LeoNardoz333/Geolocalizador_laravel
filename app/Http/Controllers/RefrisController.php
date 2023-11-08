@@ -125,4 +125,9 @@ class RefrisController extends Controller
         UpRefris::where('id',$id)->delete();
         return redirect()->route('TablaRefrisAdmins')->with('success','Refrigerador eliminado correctamente.');
     }
+
+    public function owo1() 
+    {
+        return view('Refris.mapa');
+    }
 }
