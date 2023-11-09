@@ -16,10 +16,22 @@ class AdminsController extends Controller
      */
     public function index()
     {
-        $resultados = UsuarioResultado::select('users.id','nombre', 'apellidoP', 'apellidoM', 'pass', 'permisos', 'usuario')
+        if(isset($_GET['buscar']))
+        {
+            $nombre = $_GET['buscar'];
+            $resultados = UsuarioResultado::select('users.id','nombre', 'apellidoP', 'apellidoM', 'pass', 'permisos', 'usuario')
             ->join('usuario', 'users.id', '=', 'usuario.fkUsers')
+            ->where('nombre','like',"%$nombre%")
             ->paginate(8);
             return view('Usuarios.index',['resultados'=>$resultados]);
+        }
+        else
+        {
+            $resultados = UsuarioResultado::select('users.id','nombre', 'apellidoP', 'apellidoM', 'pass', 'permisos', 'usuario')
+                ->join('usuario', 'users.id', '=', 'usuario.fkUsers')
+                ->paginate(8);
+                return view('Usuarios.index',['resultados'=>$resultados]);
+        }
     }
 
     /**

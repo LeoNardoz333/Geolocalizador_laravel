@@ -25,6 +25,20 @@
         {{ session('success') }}
     </div>
     @endif
+    <form method="GET" action="{{route('TablaRefris')}}">
+        @csrf
+        <div style="">
+            <label style="font-weight:bold;" for="buscar">Filtrar por: </label>
+            <select name="filtro" id="filtro">
+                <option value="nombre">Nombre</option>
+                <option value="marca">Marca</option>
+                <option value="modelo">Modelo</option>
+            </select>
+            <input type="text" name="buscar" id="buscar" placeholder="Buscar">
+            <input class="btn btn-primary mb-2 w-25" type="submit" value="Buscar">
+            <a href="{{ route('TablaRefris') }}" class="btn btn-success">Mostrar todos</a>
+        </div>
+    </form>
     <h1 class="text-center" style="text-align: center; margin: 0 auto;">Refrigeradores</h1>
     <div class="container">
         <br><br>

@@ -26,55 +26,64 @@
         {{ session('success') }}
     </div>
     @endif
-<h1 class="text-center">Usuarios</h1>
-<div class="container">
-    <form class="" action="{{route('AddUsuario')}}">
+    <form method="GET" action="{{route('TablaUsuarios')}}">
         @csrf
-        <button class="btn btn-primary mb-2 w-25" style="background-color: #3A4950" type="submit"><span class="p-4">Nuevo</span></button>
+        <div style="">
+            <label style="font-weight:bold;" for="buscar">Buscar: </label>
+            <input type="text" name="buscar" id="buscar" placeholder="Nombre del empleado">
+            <input class="btn btn-primary mb-2 w-25" type="submit" value="Buscar">
+            <a href="{{ route('TablaUsuarios') }}" class="btn btn-success">Mostrar todos</a>
+        </div>
     </form>
-    <br><br>
-    <table class="table table-responsive table-striped ">
-        <tr class="table-primary">
-            <td>ID</td>
-            <td>Nombre</td>
-            <td>Apellido Paterno</td>
-            <td>Apellido Materno</td>
-            <td>Contraseña</td>
-            <td>Permisos</td>
-            <td>Usuario</td>
-            <td>Administrar</td>
-        </tr>
-        @foreach ($resultados as $resultado)
-        <tr>
-            <td>{{$resultado->id}}</td>
-            <td>{{$resultado->nombre}}</td>
-            <td>{{$resultado->apellidoP}}</td>
-            <td>{{$resultado->apellidoM}}</td>
-            <td>{{$resultado->pass}}</td>
-            <td>{{$resultado->permisos}}</td>
-            <td>{{$resultado->usuario}}</td>
-            <td>
-                <div class="d-flex">
-                    <a class="buttones btn btn-success mx-1" 
-                    href="{{route(('ModificarUsuario'), ['id' => $resultado->id])}}">Modificar</a>
-                </div>
-            </td>
-            <td>
-                <div class="d-flex">
-                    <form action="{{route('EliminarUsuario', ['id' => $resultado->id])}}" method="POST"
-                        onsubmit="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">
-                        @csrf
-                        @method('DELETE')
-                        <button class="buttones btn btn-danger mx-1">Eliminar</button>
-                    </form>
-                </div>
-            </td>
-        </tr>
-        @endforeach
-    </table>
-    {{$resultados->links('pagination::bootstrap-5')}}
-</div>
-<a class="botona btn btn-primary mb-2 w-25" style="float: rigth" href="{{route('RefrisMenu')}}">Regresar</a>
+    <h1 class="text-center">Usuarios</h1>
+    <div class="container">
+        <form class="" action="{{route('AddUsuario')}}">
+            @csrf
+            <button class="btn btn-primary mb-2 w-25" style="background-color: #3A4950" type="submit"><span class="p-4">Nuevo</span></button>
+        </form>
+        <br><br>
+        <table class="table table-responsive table-striped ">
+            <tr class="table-primary">
+                <td>ID</td>
+                <td>Nombre</td>
+                <td>Apellido Paterno</td>
+                <td>Apellido Materno</td>
+                <td>Contraseña</td>
+                <td>Permisos</td>
+                <td>Usuario</td>
+                <td>Administrar</td>
+            </tr>
+            @foreach ($resultados as $resultado)
+            <tr>
+                <td>{{$resultado->id}}</td>
+                <td>{{$resultado->nombre}}</td>
+                <td>{{$resultado->apellidoP}}</td>
+                <td>{{$resultado->apellidoM}}</td>
+                <td>{{$resultado->pass}}</td>
+                <td>{{$resultado->permisos}}</td>
+                <td>{{$resultado->usuario}}</td>
+                <td>
+                    <div class="d-flex">
+                        <a class="buttones btn btn-success mx-1" 
+                        href="{{route(('ModificarUsuario'), ['id' => $resultado->id])}}">Modificar</a>
+                    </div>
+                </td>
+                <td>
+                    <div class="d-flex">
+                        <form action="{{route('EliminarUsuario', ['id' => $resultado->id])}}" method="POST"
+                            onsubmit="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">
+                            @csrf
+                            @method('DELETE')
+                            <button class="buttones btn btn-danger mx-1">Eliminar</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            @endforeach
+        </table>
+        {{$resultados->links('pagination::bootstrap-5')}}
+    </div>
+    <a class="botona btn btn-primary mb-2 w-25" style="float: rigth" href="{{route('RefrisMenu')}}">Regresar</a>
 </body>
 <script>
     document.addEventListener("DOMContentLoaded", function() {

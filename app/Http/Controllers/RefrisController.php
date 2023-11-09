@@ -14,10 +14,22 @@ class RefrisController extends Controller
      */
     public function index()
     {
-        $resultados = refris::select('id','nombre', 'marca', 'modelo', 'color', 'tamano',
-         'capacidad', 'ubicacion')
-            ->paginate(8);
-        return view('Refris.index',['resultados'=>$resultados]);
+        if(isset($_GET['buscar'])&&isset($_GET['filtro']))
+        {
+            $busqueda=$_GET['buscar'];
+            $resultados = refris::select('id','nombre', 'marca', 'modelo', 'color', 'tamano',
+             'capacidad', 'ubicacion')
+                ->where($_GET['filtro'],'like',"%$busqueda%")
+                ->paginate(8);
+            return view('Refris.index',['resultados'=>$resultados]);
+        }
+        else
+        {
+            $resultados = refris::select('id','nombre', 'marca', 'modelo', 'color', 'tamano',
+             'capacidad', 'ubicacion')
+                ->paginate(8);
+            return view('Refris.index',['resultados'=>$resultados]);
+        }
     }
 
     public function indexAdmins()
