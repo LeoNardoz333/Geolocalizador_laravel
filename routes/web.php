@@ -27,6 +27,7 @@ Route::get('/', function () {
 Route::get('/Usuarios/LoginUsuario', [UsuariosController::class,'index'])->name('LoginUsuarios');
 Route::post('/Usuarios/LoginUsuario', [UsuariosController::class,'store'])->name('UsuariosStore');
 Route::post('/', [UsuariosController::class,'store'])->name('AdminsStore');
+
 //Refris
 Route::get('/Refris/Menu', function (){
     return view('Refris.Menu');
@@ -38,6 +39,7 @@ Route::post('Refris',[RefrisController::class,'store'])->name('InsertarRefri');
 Route::get('/Refris/{id}/UpdateRefris',[RefrisController::class,'edit'])->name('ModificarRefris');
 Route::put('Refris/{id}/indexAdmins', [RefrisController::class,'update'])->name('UpdateRefris');
 Route::delete('/Refris/{id}/indexAdmins', [RefrisController::class, 'destroy'])->name('EliminarRefris');
+
 //Administradores
 Route::get('/Usuarios',[AdminsController::class,'index'])->name('TablaUsuarios');
 Route::get('/Usuarios/AgregarAdmin',[AdminsController::class,'create'])->name('AddUsuario');
@@ -46,4 +48,6 @@ Route::get('/Usuarios/{id}/ModificarAdmin', [AdminsController::class, 'edit'])->
 Route::put('/Usuarios/{id}', [AdminsController::class, 'update'])->name('UpdateUsuario');
 Route::delete('/usuarios/{id}', [AdminsController::class, 'destroy'])->name('EliminarUsuario');
 
-Route::get('/Refris/mapa',[RefrisController::class,'owo1'])->name('owo2');
+//mapas
+Route::get('/Refris/{id}/mapa',[RefrisController::class,'edit1'])->name('edit2');
+

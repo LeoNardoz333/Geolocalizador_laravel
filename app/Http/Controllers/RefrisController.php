@@ -138,8 +138,10 @@ class RefrisController extends Controller
         return redirect()->route('TablaRefrisAdmins')->with('success','Refrigerador eliminado correctamente.');
     }
 
-    public function owo1() 
+    // funcion para el mapa 
+    public function edit1(string $id)
     {
-        return view('Refris.mapa');
+        $refris = UpRefris::findOrFail($id);
+        return view('Refris.mapa', compact('refris'));
     }
 }

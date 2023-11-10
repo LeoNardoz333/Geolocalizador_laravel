@@ -62,7 +62,10 @@
                 <td>{{$resultado->color}}</td>
                 <td>{{$resultado->tamano}}</td>
                 <td>{{$resultado->capacidad}}</td>
-                <td><a class="buttones btn btn-primary"href="" value="{{$resultado->ubicacion}}">Ver</a></td>
+                <td>
+                    <a class="buttones btn btn-primary" 
+                    href="{{ route('verMapa2', $resultado->ubicacion) }}">Ver</a>
+                </td>
             </tr>
             @endforeach
         </table>

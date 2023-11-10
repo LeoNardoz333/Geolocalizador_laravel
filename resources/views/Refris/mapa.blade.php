@@ -1,32 +1,61 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Página con Mapa</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <title>Mapa con Leaflet</title>
+    <!-- Incluye Leaflet CSS y JavaScript desde CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Estilos para el contenedor del mapa -->
     <style>
-        /* Estilo básico para el contenedor del mapa */
         #map {
-            height: 400px; /* Ajusta la altura como desees */
+            height: 400px;
         }
     </style>
 </head>
+
 <body>
-    <h1>Mi Página con Mapa</h1>
-    <!-- Agrega un contenedor para el mapa -->
-    <div id="map"></div>
+    <form class="form-login" action="{{ route('UpdateRefris', $refris->ubicacion) }}" method="POST">
+        @csrf
+        @method('PUT')
+        <div class="group">
+            <span class="label">Ubicacion:</span>
+            <input name="ubicacion" type="text" class="input" value="{{ $refris->ubicacion }}">
+        </div>
 
-    <!-- Incluye la biblioteca Leaflet y define el mapa -->
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script>
-        // Inicializa un mapa Leaflet en el contenedor con ID "map"
-        var map = L.map('map').setView([51.505, -0.09], 13); // Por ejemplo, Nueva York
+        <!-- Contenedor del mapa -->
+        <div id="map"></div>
 
-        // Agrega una capa de mapa de OpenStreetMap
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-    </script>
+        <script>
+            // Función para inicializar el mapa
+            function initMap() {
+                // Coordenadas del centro del mapa (latitud, longitud)
+                var mapCenter = [40.7128, -74.0060]; // Ejemplo: Nueva York
+
+                // Obtén las coordenadas del campo de texto
+                var ubicacionInput = document.getElementById('ubicacion').value;
+                var coordenadas = ubicacionInput.split(',').map(function(coord) {
+                    return parseFloat(coord.trim());
+                });
+
+                // Crea el mapa y establece la vista inicial
+                var map = L.map('map').setView(coordenadas, 13);
+
+                // Añade una capa de mapa base (Mapbox Streets en este caso)
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                }).addTo(map);
+
+                // Añade un marcador en el centro del mapa
+                L.marker(coordenadas).addTo(map)
+                    .bindPopup('¡Hola! Este es un marcador de ejemplo.');
+            }
+            // Llama a la función de inicialización del mapa cuando la página se carga
+            window.onload = initMap;
+        </script>
+    </form>
 </body>
+
 </html>
