@@ -58,7 +58,7 @@
                 <td>{{$resultado->gps}}</td>
                 <td>
                     <a class="buttones btn btn-primary" 
-                    href="{{ route('edit2', $resultado->ubicacion) }}">Ver</a>
+                    href="{{ route('edit2', $resultado->id) }}">Ver</a>
                 </td>
                 <td>
                     <div class="d-flex">

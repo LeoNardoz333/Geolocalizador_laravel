@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa Leaflet con Coordenadas</title>
+  <!-- Enlace al archivo de estilo de Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphTQ3coHoCpB+3nfOvW+Sr1dgjx4XuB+9gIrdErvkO5lUoaC6RO/nFhE7i2k+DEOS6RD0MvCKew==" crossorigin=""/>
+
+  <!-- Estilos adicionales para el mapa -->
+  <style>
+    #map {
+      height: 400px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div>
+    <label for="coordenadas">Coordenadas:</label>
+    <input type="text" id="coordenadas" placeholder="Ingrese las coordenadas" value="0,0">
+  </div>
+
+  <!-- Contenedor para el mapa -->
+  <div id="map"></div>
+
+  <!-- Enlace al archivo de script de Leaflet -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <script>
+
+    // Función para inicializar el mapa
+    function initMap() {
+
+      // Obtener las coordenadas del textbox
+      var coordenadas = document.getElementById('coordenadas').value;
+
+      // Dividir las coordenadas en latitud y longitud
+      var coordenadasArray = coordenadas.split(',');
+      var latitud = parseFloat(coordenadasArray[0]);
+      var longitud = parseFloat(coordenadasArray[1]);
+
+      // Verificar si las coordenadas son válidas
+      if (isNaN(latitud) || isNaN(longitud)) {
+        alert('Coordenadas inválidas. Ingrese valores válidos.');
+        return;
+      }
+
+      // Crear el mapa
+      var map = L.map('map').setView([12, 13], 13);
+
+      // Añadir un marcador en las coordenadas dadas
+      L.marker([12, 13]).addTo(map);
+
+      // Añadir la capa de mapa base de OpenStreetMap
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+    }
+
+    // Llamar a la función initMap cuando la página se cargue
+    document.addEventListener('DOMContentLoaded', initMap);
+  </script>
+</body>
+</html>

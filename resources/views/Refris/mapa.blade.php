@@ -4,58 +4,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa con Leaflet</title>
-    <!-- Incluye Leaflet CSS y JavaScript desde CDN -->
+    <title>Leaflet Map</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <!-- Estilos para el contenedor del mapa -->
-    <style>
-        #map {
-            height: 400px;
-        }
-    </style>
 </head>
 
 <body>
-    <form class="form-login" action="{{ route('UpdateRefris', $refris->ubicacion) }}" method="POST">
-        @csrf
-        @method('PUT')
-        <div class="group">
-            <span class="label">Ubicacion:</span>
-            <input name="ubicacion" type="text" class="input" value="{{ $refris->ubicacion }}">
-        </div>
+    <div class="group">
+        <label for="coordenadas">Coordenadas:</label>
+        <input type="text" id="coordenadas" placeholder="coordenadas:" value="{{ $refris->ubicacion }}">
+    </div>
 
-        <!-- Contenedor del mapa -->
-        <div id="map"></div>
+    <!-- El contenedor del mapa -->
+    <div id="map" style="height: 400px;"></div>
 
-        <script>
-            // Función para inicializar el mapa
-            function initMap() {
-                // Coordenadas del centro del mapa (latitud, longitud)
-                var mapCenter = [40.7128, -74.0060]; // Ejemplo: Nueva York
+    <!-- Incluye la biblioteca Leaflet -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-                // Obtén las coordenadas del campo de texto
-                var ubicacionInput = document.getElementById('ubicacion').value;
-                var coordenadas = ubicacionInput.split(',').map(function(coord) {
-                    return parseFloat(coord.trim());
-                });
+    <!-- Tu script personalizado para crear el mapa -->
+    <script>
+        function initMap() {
+            // Obtener las coordenadas del textbox
+            var coordenadas = document.getElementById('coordenadas').value;
 
-                // Crea el mapa y establece la vista inicial
-                var map = L.map('map').setView(coordenadas, 13);
+            // Dividir las coordenadas en latitud y longitud
+            var coordenadasArray = coordenadas.split(',');
+            var latitud = parseFloat(coordenadasArray[0]);
+            var longitud = parseFloat(coordenadasArray[1]);
 
-                // Añade una capa de mapa base (Mapbox Streets en este caso)
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '© OpenStreetMap contributors'
-                }).addTo(map);
-
-                // Añade un marcador en el centro del mapa
-                L.marker(coordenadas).addTo(map)
-                    .bindPopup('¡Hola! Este es un marcador de ejemplo.');
+            // Verificar si las coordenadas son válidas
+            if (isNaN(latitud) || isNaN(longitud)) {
+                alert('Coordenadas inválidas. Ingrese valores válidos.');
+                return;
             }
-            // Llama a la función de inicialización del mapa cuando la página se carga
-            window.onload = initMap;
-        </script>
-    </form>
+
+            // Inicializa el mapa
+            var mymap = L.map('map').setView([latitud, longitud], 80);
+
+            // Añade un mosaico (tile layer) de OpenStreetMap
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(mymap);
+
+            // Añade un marcador en el mapa
+            var marker = L.marker([latitud, longitud]).addTo(mymap);
+
+            // Añade un popup al marcador
+            marker.bindPopup("<b>Hola, este es un marcador</b>").openPopup();
+        }
+
+        // Llamar a la función initMap cuando la página se cargue
+        document.addEventListener('DOMContentLoaded', initMap);
+    </script>
+
+    <div>
+        <label for="coordenadas">Coordenadas2:</label>
+        <input type="text" id="coordenadas2" placeholder="Ingrese las coordenadas" value="0,0">
+    </div>
+
+    51.505, -0.09
+    40.7128, -74.0060
+    48.8566, 2.3522
+    -33.8688, 151.2093
+    35.6895, 139.6917
+    -33.9249, 18.4241
 </body>
 
 </html>
