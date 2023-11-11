@@ -28,7 +28,7 @@
     @endif
     <form method="GET" action="{{route('TablaRefris')}}">
         @csrf
-        <div style="">
+        <div>
             <label style="font-weight:bold;" for="buscar">Filtrar por: </label>
             <select name="filtro" id="filtro">
                 <option value="nombre">Nombre</option>
