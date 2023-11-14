@@ -28,14 +28,14 @@
     @endif
     <form method="GET" action="{{route('TablaUsuarios')}}">
         @csrf
-        <div style="">
+        <div class="find">
             <label style="font-weight:bold;" for="buscar">Buscar: </label>
-            <input type="text" name="buscar" id="buscar" placeholder="Nombre del empleado">
-            <input class="btn btn-primary mb-2 w-25" type="submit" value="Buscar">
+            <input class="find-text" type="text" name="buscar" id="buscar" placeholder="Nombre del empleado">
+            <input class="btn btn-primary mb-2 w-25" style="margin-right: 8px" type="submit" value="Buscar">
             <a href="{{ route('TablaUsuarios') }}" class="btn btn-success">Mostrar todos</a>
         </div>
     </form>
-    <h1 class="text-center">Usuarios</h1>
+    <h1 class="text-center" style="color: white">Usuarios</h1>
     <div class="container">
         <form class="" action="{{route('AddUsuario')}}">
             @csrf
