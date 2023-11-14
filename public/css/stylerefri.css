@@ -10,6 +10,18 @@ body{
     background-color: #2e3a40;
     color: #6a6f8c;
 }
+.find{
+    background-color: #27292aa9;
+    padding: 10px;
+}
+.find-text{
+    border: none;
+    border-radius: 5px;
+    padding: 7px;
+    color: #687581;
+    background: rgba(46, 111, 138, 0.464);
+    margin-right: 8px;
+}
 .table {
     width: 100%;
     margin-bottom: 1rem;

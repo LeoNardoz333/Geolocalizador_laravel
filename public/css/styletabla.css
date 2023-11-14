@@ -6,6 +6,18 @@ body{
     background-size: cover;background-repeat: no-repeat;
 	font:600 16px/18px 'Open Sans',sans-serif;
 }
+.find{
+    background-color: #27292aa9;
+    padding: 10px;
+}
+.find-text{
+    border: none;
+    border-radius: 5px;
+    padding: 7px;
+    color: #d8e1ea;
+    background: rgba(85, 101, 108, 0.323);
+    margin-right: 8px;
+}
 .login-navbar{
     background-color: #0b0d0e;
     color: #6a6f8c;

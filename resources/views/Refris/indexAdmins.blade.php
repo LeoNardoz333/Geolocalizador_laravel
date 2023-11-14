@@ -28,15 +28,15 @@
     @endif
     <form method="GET" action="{{route('TablaRefris')}}">
         @csrf
-        <div>
+        <div class="find">
             <label style="font-weight:bold;" for="buscar">Filtrar por: </label>
-            <select name="filtro" id="filtro">
+            <select name="filtro" class="find-text" id="filtro">
                 <option value="nombre">Nombre</option>
                 <option value="marca">Marca</option>
                 <option value="modelo">Modelo</option>
             </select>
-            <input type="text" name="buscar" id="buscar" placeholder="Buscar">
-            <input class="btn btn-primary mb-2 w-25" type="submit" value="Buscar">
+            <input class="find-text" type="text" name="buscar" id="buscar" placeholder="Buscar">
+            <input class="btn btn-primary mb-2 w-25" style="margin-right: 8px" type="submit" value="Buscar">
             <a href="{{ route('TablaRefris') }}" class="btn btn-success">Mostrar todos</a>
         </div>
     </form>
